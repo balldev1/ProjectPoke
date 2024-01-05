@@ -15,6 +15,10 @@ const MonsterPage = () => {
 
   const router = useRouter();
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  const [searchValue, setSearchValue] = useState<string>('');
+  const filteredProducts = pokemons.filter((product: any) =>
+        product.name.toLowerCase().startsWith(searchValue.toLowerCase())
+    );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,12 +53,13 @@ const MonsterPage = () => {
     <div className="m-5 border-2 rounded-md">
       <div className="m-5 flex">
           <div className=" ml-auto">
-            <input className="border-2 ml-auto " placeholder="Search Name Poke"/>
+            <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
+             className="border-2 ml-auto " placeholder="Search Name Poke"/>
           </div>
        
       </div>  
       <div className="m-5 grid md:grid-cols-4 grid-cols-2 gap-10">
-        {pokemons.map((pokemon, index) => (
+        {filteredProducts.map((pokemon, index) => (
           <div key={index} className="border-2 p-5">
             <div className="border-2 py-5 flex items-center justify-center">
              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
