@@ -54,9 +54,9 @@ const MonsterPage = () => {
       <div className="m-5 flex">
           <div className=" ml-auto">
             <input value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
-             className="border-2 ml-auto " placeholder="Search Name Poke"/>
+             className="border-2 ml-auto " placeholder="Search Name test"/>
           </div>
-       
+        
       </div>  
       <div className="m-5 grid md:grid-cols-4 grid-cols-2 gap-10">
         {filteredProducts.map((pokemon, index) => (
